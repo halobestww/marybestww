@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2026/02/02 | Mary ^_<</title>
+    
+
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('fonts/font.ttf') format('truetype');
+        }
+
+        * {
+            font-family: 'CustomFont', Arial, sans-serif !important;
+        }
+
+        .gradientText {
+            background: linear-gradient(90deg, #f6a597, #e571e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            background: black;
+            color: white;
+            overflow: hidden;
+        }
+
+        .glassBox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 18px 28px;
+            border-radius: 15px;
+
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            width: fit-content;
+            gap: 6px;
+        }
+
+        #screen1 {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        #screen2 {
+            height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            background-image: url('/backgrounds/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .linkText {
+            font-size: 1.4rem;
+            margin: 1px 0;
+            cursor: pointer;
+        }
+
+        #bottomRight {
+            position: fixed;
+            bottom: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        #bottomLeft {
+            position: fixed;
+            bottom: 10px;
+            left: 15px;
+            font-size: 1.5rem;
+            opacity: 0.6;
+            pointer-events: none;
+            line-height: 1.2;
+        }
+
+        #popupOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.35);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #popupBox {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.15);
+
+            padding: 70px 80px;
+            border-radius: 20px;
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            min-width: 320px;
+            min-height: 200px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+        }
+        
+                #popupBox,
+        #popupBox * {
+            font-family: Arial, sans-serif !important;
+        }
+
+        #popupText {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        #popupBtn {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #popupBtn:hover {
+            transform: translateX(-50%) scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="screen1">
+    <h1 class="gradientText">click to enter</h1>
+</div>
+
+<div id="screen2">
+
+    <div class="glassBox">
+
+        <a class="linkText gradientText" href="https://steamcommunity.com/profiles/76561199528567590/" target="_blank" style="text-decoration:none;">Steam</a>
+
+        <a class="linkText gradientText" href="https://discordapp.com/users/790202040520409128" target="_blank" style="text-decoration:none;">Discord</a>
+
+        <a class="linkText gradientText" href="https://open.spotify.com/user/31txjixcgh5kehvugoslnq2rl7y4?nd=1" target="_blank" style="text-decoration:none;">Spotify</a>
+
+        <a class="linkText gradientText" href="https://namemc.com/profile/maryxy.2" target="_blank" style="text-decoration:none;">NameMC</a>
+
+        <a class="linkText gradientText" href="https://www.last.fm/user/maaaryry" target="_blank" style="text-decoration:none;">LastFM</a>
+
+        <div class="linkText gradientText" style="margin-top: 10px;" onclick="openPopup()">
+            Click Me :D
+        </div>
+
+    </div>
+
+    <div id="bottomRight">I love you mary <3</div>
+
+    <div id="bottomLeft">
+        Made by: Halo<br>
+        For: Mary <3
+    </div>
+
+</div>
+
+<!-- POPUP -->
+<div id="popupOverlay">
+    <div id="popupBox">
+
+        <div id="popupText" class="gradientText"></div>
+
+        <button id="popupBtn" onclick="closePopup()">Done</button>
+
+    </div>
+</div>
+
+<script src="things/cursor.js"></script>
+
+<script>
+document.getElementById("screen1").addEventListener("click", function () {
+    document.getElementById("screen1").style.display = "none";
+    document.getElementById("screen2").style.display = "flex";
+
+    initMusic();
+    startTitleCycle();
+});
+
+const popupMessages = [
+    "Mary I just want to say I love you so much :)",
+    "MARY IM OBSESSED WITH YOUUUU <3",
+    "I LOVE YOU SO INSANELY MUCHHHHH MY LOVE",
+    "MARYYYY I JUST WANT TO LET YOU KNOW THAT YOU'RE SO GORGEOUS AND BEAUTIFUL YOU'RE SO AMAZING\n I LOVE YOU SO INSANELY MUCH YOU MEAN EVERYTHING TO ME AND YOU ARE THE PRETTIEST GIRL IN THE WHOLE WORLD YOU ARE LITERALLY SOOOOOO INSANELY GORGEOUS AND BEAUTIFUL YOU'RE SO INSANELY PRETTYYYYY MARY",
+    "MARY YOU'RE SO THE MOST GORGEOUS GIRL IN THE WHOLE WORLD LITERALLY THE CUTEST PERSON EVER IM SO IN LOVE WITH YOU MY GORGEOUS BEAUTIFUL GODDESS GIRLFRIEND MWAHHH",
+    "YOU'RE SOOOOOO INSANELY ADORABLE MARYYY MY PERFECT GIRLFRIEND YOU'RE SO PERFECT AND AMAZING IM LITERALLY SO IN LOVE WITH YOU",
+    "HAIIII MARYYYY I LOVE YOU SO MUCHHHHH BTW :3",
+    "MARYYYYYY I HOPE YOU'RE DOING AMAZING TODAY AND JUST WANTED TO LET YOU KNOW YOU'RE SO BEAUTIFUL AND I LOVE YOU SO MUCH",
+    "HAIIII CUTIEEEE I HOPE YOU KNOW HOW MUCH I LOVE YOU AND I HOPE YOU'RE HAVING AN AMAZING DAY MY LOVE <3",
+    "Hiiiiii maryyyy my gorgeous girlfriend you're so beautiful and gorgeous literally the hottest girl ever\n my cuteeeee cute cute girlfriend im so in love with youuuu im obsessed with youuuuu my pretty princess :3",
+    "Haiiii mary I hope you're having a fantastic day my cutie <3 mwahhhhh",
+    "MARYYY I just wanna let you know you make me so happy all the timeeeee :D I love youuu mwahhhh",
+    "HAI MARY I HOPE YOU HAVE A WONDERFUL AMAZING DAY MY LOVE YOU DESERVE EVERYTHINGGGGG",
+    "I LOVE YOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU MARYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
+
+];
+
+function openPopup() {
+    const text = popupMessages[Math.floor(Math.random() * popupMessages.length)];
+    document.getElementById("popupText").innerText = text;
+
+    document.getElementById("popupOverlay").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popupOverlay").style.display = "none";
+}
+
+const songs = [
+    "music/BusyWoman.mp3",
+    "music/matteblack.mp3",
+    "music/Illegal.mp3",
+    "music/Mosquito.mp3",
+    "music/Stateside.mp3",
+    "music/TrueRomance.mp3",
+    "music/TurnYourPhoneOff.mp3",
+    "music/AttractedToYou.mp3",
+    "music/BoysALiarPt2.mp3",
+    "music/pain.mp3",
+    "music/CapleableOfLove.mp3",
+    "music/LastValentines.mp3"
+];
+
+let currentSong = 0;
+let audio = new Audio();
+let isMuted = false;
+
+function loadSong(index, autoPlay = false) {
+    audio.pause();
+    audio = new Audio(songs[index]);
+    audio.volume = 0.01;
+    audio.muted = isMuted;
+
+    audio.addEventListener("ended", function () {
+        let next;
+        do {
+            next = Math.floor(Math.random() * songs.length);
+        } while (next === currentSong);
+
+        currentSong = next;
+        loadSong(currentSong, true);
+    });
+
+    if (autoPlay) audio.play();
+}
+
+function initMusic() {
+    currentSong = Math.floor(Math.random() * songs.length);
+    loadSong(currentSong, true);
+}
+
+const titles = [
+"2026/02/02","I LOVE MARY","I LOVE YOU","MARYBESTWW","^_<",
+"IM SO IN LOVE WITH YOU","MY PRETTY GIRL","MY BEATUFIUL GIRLFRIEND",
+"MARY IM SO IN LOVE WITH YOU",">_<","MARY MY LOVE","MWAHHHHHHH",
+"MARY YOU'RE SO PERFECT","MARY YOU'RE BEAUTIFUL","MARY YOU'RE GORGEOUS",
+"PRETTIEST GIRL EVER","MY CUTIE :3",":3",">.<","MARY ^_<","MY GIRLFRIEND",
+"MY WIFE","MY CUTIE","MY GORGEOUS GIRL","MY BEAUTIFUL WIFE","MY PERFECT GIRLFRIEND",
+"MY PRETTY PRINCESS"
+];
+
+let titleIndex = 0;
+let titleInterval;
+let lastTitle = -1;
+
+function startTitleCycle() {
+    clearInterval(titleInterval);
+
+    titleInterval = setInterval(() => {
+        let randomIndex;
+
+        do {
+            randomIndex = Math.floor(Math.random() * titles.length);
+        } while (randomIndex === lastTitle);
+
+        lastTitle = randomIndex;
+        document.title = titles[randomIndex];
+    }, 1000);
+}
+</script>
+
+</body>
+</html>
